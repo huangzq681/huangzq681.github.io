@@ -42,7 +42,10 @@ sections:
         I am particularly interested in multi-disciplinary climate change fields. My research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of my research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, I am also interested in how these extremes affect the ecology, human, and socioeconomic systems.  
         Besides the traditional analyzing methods, I am very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes.
     design:
-      columns: '1'
+      columns: '2'
+      spacing:
+        padding: ['20px', '0', '20px', '0'] # 调整内边距
+      css_class: 'full-width' # 添加自定义 CSS 类（如果需要）
   - block: collection
     id: papers
     content:
