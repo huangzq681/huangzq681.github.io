@@ -10,7 +10,7 @@ first_name: Zeqin
 last_name: Huang
 
 # Pronouns (optional)
-pronouns: He/his
+pronouns: He/him
 
 # Status emoji
 status:
