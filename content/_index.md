@@ -65,6 +65,7 @@ sections:
         folders:
           - publication
         exclude_featured: false
+      count: 0
     design:
       view: citation
   - block: collection
@@ -75,6 +76,7 @@ sections:
         folders:
           - coauthor-publication
         exclude_featured: false
+      count: 0
     design:
       view: citation
   # - block: collection
