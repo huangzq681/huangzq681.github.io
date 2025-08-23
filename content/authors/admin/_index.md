@@ -108,10 +108,10 @@ skills:
         description: ''
         percent: 60
         icon: basketball.svg
-      - name: Badminton
-        description: ''
-        percent: 60
-        icon: badminton.svg
+      # - name: Badminton
+      #   description: ''
+      #   percent: 60
+      #   icon: badminton.svg
       - name: Cats
         description: ''
         percent: 100
