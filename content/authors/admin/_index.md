@@ -70,7 +70,7 @@ education:
   - area: BSc Hydraulic and Hydropower Engineering
     institution: South China University of Technology
     date_start: 2013-09-01
-    date_end: 2017-06-31
+    date_end: 2017-06-30
     summary: |
       Thesis on _Spatial and Temporal Variation of Evapotranspiration and Driving Factors in the Main Grain Production Area of China_.
 work:
