@@ -1,16 +1,16 @@
 ---
 # Display name
-title: 吳健雄
+title: 黄泽勤
 
 # Name pronunciation (optional)
-name_pronunciation: Chien Shiung Wu
+name_pronunciation: Zeqin Huang
 
 # Full name (for SEO)
-first_name: Shiung Wu
-last_name: Chien
+first_name: Zeqin
+last_name: Huang
 
 # Pronouns (optional)
-pronouns: she/her
+pronouns: He/his
 
 # Status emoji
 status:
@@ -27,88 +27,61 @@ role: Chief Scientist
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: OpenAI
-    url: https://openai.com/
+  - name: Sun Yat-sen University
+    url: https://www.sysu.edu.cn/sysuen/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:your-email@example.com'
+    url: 'mailto:huangzq8@mail2.sysu.edu.cn'
     label: E-mail Me
   - icon: brands/x
-    url: https://twitter.com/GetResearchDev
-  - icon: brands/instagram
-    url: https://www.instagram.com/
+    url: https://twitter.com/Huangzq681
   - icon: brands/github
-    url: https://github.com/gcushen
-  - icon: brands/linkedin
-    url: https://www.linkedin.com/
+    url: https://github.com/huangzq681
   - icon: academicons/google-scholar
-    url: https://scholar.google.com/
-  - icon: academicons/orcid
-    url: https://orcid.org/
+    url: https://scholar.google.com/citations?user=k80V90kAAAAJ
+  - icon: researchgate
+    url: https://www.researchgate.net/profile/Zeqin-Huang-2
 
 interests:
+  - Climate Change
+  - Hydrology
   - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
 
 education:
-  - area: PhD Artificial Intelligence
-    institution: Stanford University
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: PhD Hydraulic Engineering
+    institution: Sun Yat-sen University & The University of Tokyo
+    date_start: 2022-09-01
+    date_end: 2026-06-01
     summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
-    button:
-      text: 'Read Thesis'
-      url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+      Thesis on _Tracking Heatwaves in Southern China under Global Warming: A Lagrangian View_. Supervised by [Prof Bingjun Liu] at SYSU and [Prof Taikan Oki] at UTokyo. 4 papers being published in 4 authorative journals.
+    # button:
+    #   text: 'Read Thesis'
+    #   url: 'https://example.com'
+  - area: MEng Hydraulic Engineering
+    institution: Sun Yat-sen University
+    date_start: 2017-09-01
+    date_end: 2019-06-01
     summary: |
-      GPA: 3.8/4.0
+      Thesis on _Spatio-temporal Evolution Characteristics of Drought in Eastern Monsoon Area of China_. Supervised by [Prof Bingjun Liu].
 
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - area: BSc Hydraulic and Hydropower Engineering
+    institution: South China University of Technology
+    date_start: 2013-09-01
+    date_end: 2017-06-31
     summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Thesis on _Spatial and Temporal Variation of Evapotranspiration and Driving Factors in the Main Grain Production Area of China_.
 work:
-  - position: Director of Cloud Infrastructure
-    company_name: GenCoin
-    company_url: ''
-    company_logo: ''
-    date_start: 2021-01-01
-    date_end: ''
-    summary: |2-
-      Responsibilities include:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - position: Backend Software Engineer
-    company_name: X
-    company_url: ''
-    company_logo: ''
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+  - position: Assistant Engineer
+    company_name: Guangdong Water Conservancy Design and Research Institute
+    date_start: 2019-06-01
+    date_end: 2020-11-01
     summary: |
-      Responsibilities include:
-      - Migrated infrastructure to a new data center
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      Participated projects:
+      - _Site Selection Planning of Pumped Storage Power Stations in Guangdong Province_
+      - _Water Supply Security Planning for Dongguan City_
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
@@ -117,13 +90,13 @@ skills:
     items:
       - name: Python
         description: ''
-        percent: 80
+        percent: 100
         icon: code-bracket
       - name: Data Science
         description: ''
         percent: 100
         icon: chart-bar
-      - name: SQL
+      - name: Remote Sensing
         description: ''
         percent: 40
         icon: circle-stack
@@ -131,10 +104,14 @@ skills:
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Hiking
+      - name: Basketball
         description: ''
         percent: 60
-        icon: person-simple-walk
+        icon: basketball
+      - name: Badminton
+        description: ''
+        percent: 60
+        icon: badminton
       - name: Cats
         description: ''
         percent: 100
@@ -146,44 +123,27 @@ skills:
 
 languages:
   - name: English
-    percent: 100
+    percent: 90
   - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
+    percent: 100
+  - name: Cantonese
+    percent: 80
 
 # Awards.
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
-  - title: Neural Networks and Deep Learning
-    url: https://www.coursera.org/learn/neural-networks-deep-learning
-    date: '2023-11-25'
-    awarder: Coursera
-    icon: coursera
-    summary: |
-      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
-  - title: Blockchain Fundamentals
-    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-    date: '2023-07-01'
-    awarder: edX
-    icon: edx
-    summary: |
-      Learned:
-      - Synthesize your own blockchain solutions
-      - Gain an in-depth understanding of the specific mechanics of Bitcoin
-      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
-  - title: 'Object-Oriented Programming in R'
-    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
-    certificate_url: https://www.datacamp.com
-    date: '2023-01-21'
-    awarder: datacamp
-    icon: datacamp
-    summary: |
-      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
+  - title: The 1st Prize of the 2nd Smart Water Conservancy Innovation Competition
+    url: https://mp.weixin.qq.com/s?__biz=MzUzOTAzNzQxMg==&mid=2247502868&idx=1&sn=0ca086fb88be3ef70f50ecdbb7b4901f&chksm=facc179fcdbb9e8981ee060d7a7abb2ef103a7ed462d91a7e6f4bee67f9ac6d8fc7608faacc3&scene=27
+    date: '2022-12-11'
+    # awarder: Coursera
+    # icon: coursera
+    # summary: |
+    #   I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
 ---
 
 ## About Me
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Zeqin Huang is currently a PhD student who is particularly interested in multi-disciplinary climate change fields. His research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of his research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, he is also interested in how these extremes affect the ecology, human, and socioeconomic systems. 
+Besides the traditional analyzing methods, he is very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes.
