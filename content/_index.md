@@ -30,7 +30,7 @@ sections:
           # Add your image background to `assets/media/`.
           filename: pattern-randomized.svg
           filters:
-            brightness: 2.0
+            brightness: 1.0
           size: cover
           position: center
           parallax: false
