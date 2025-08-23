@@ -67,6 +67,16 @@ sections:
         exclude_featured: false
     design:
       view: citation
+  - block: collection
+    content:
+      title: Co-author Publications
+      text: ""
+      filters:
+        folders:
+          - coauthor-publication
+        exclude_featured: false
+    design:
+      view: citation
   # - block: collection
   #   id: talks
   #   content:
