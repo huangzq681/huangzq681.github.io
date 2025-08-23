@@ -42,7 +42,7 @@ profiles:
     url: https://github.com/huangzq681
   - icon: academicons/google-scholar
     url: https://scholar.google.com/citations?user=k80V90kAAAAJ
-  - icon: researchgate
+  - icon: assets/media/icons/researchgate
     url: https://www.researchgate.net/profile/Zeqin-Huang-2
 
 interests:
@@ -107,11 +107,11 @@ skills:
       - name: Basketball
         description: ''
         percent: 60
-        icon: basketball
+        icon: assets/media/icons/basketball
       - name: Badminton
         description: ''
         percent: 60
-        icon: badminton
+        icon: assets/media/icons/badminton
       - name: Cats
         description: ''
         percent: 100
