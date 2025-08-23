@@ -23,7 +23,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Chief Scientist
+role: PhD candidate
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
@@ -145,5 +145,5 @@ awards:
 
 ## About Me
 
-Zeqin Huang is currently a PhD student who is particularly interested in multi-disciplinary climate change fields. His research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of his research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, he is also interested in how these extremes affect the ecology, human, and socioeconomic systems. 
+Zeqin Huang is currently a PhD student who is particularly interested in multi-disciplinary climate change fields. His research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of his research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, he is also interested in how these extremes affect the ecology, human, and socioeconomic systems.  
 Besides the traditional analyzing methods, he is very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes.
