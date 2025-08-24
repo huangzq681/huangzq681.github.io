@@ -61,3 +61,6 @@ features:
 
 # Custom CSS
 custom_css: ["custom.css"] # 放置在此处，作为顶级字段
+
+talks:
+  view: list
