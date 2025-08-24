@@ -1,54 +1,76 @@
-{{/* 调试信息 */}}
-{{ if .Items }}
-  <p>找到 {{ len .Items }} 个条目</p>
-{{ else }}
-  <p>没有找到任何条目。检查：</p>
-  <ul>
-    <li>page_type 是否设置为 "talk"</li>
-    <li>talk 文件夹中是否有内容</li>
-    <li>内容文件是否有正确的 front matter</li>
-  </ul>
+{{/* 调试：尝试不同的数据源 */}}
+{{ $talks := .Items }}
+{{ if not $talks }}
+  {{/* 尝试直接从 talk 内容类型获取 */}}
+  {{ $talks = where site.RegularPages "Type" "talk" }}
+{{ end }}
+{{ if not $talks }}
+  {{/* 尝试从所有页面中筛选 */}}
+  {{ $talks = where site.RegularPages "Section" "talk" }}
 {{ end }}
 
-{{/* 按年份分组会议数据 */}}
-{{ $grouped := dict }}
-{{ $years := slice }}
-{{ range .Items }}
-  {{ $year := (time .Date).Format "2006" }}
-  {{ $grouped = merge $grouped (dict $year (append (index $grouped $year | default slice) .)) }}
-  {{ if not (in $years $year) }}
-    {{ $years = $years | append $year }}
-  {{ end }}
-{{ end }}
-
-{{/* 按年份倒序排列 */}}
-{{ $sortedYears := sort $years "desc" }}
-
-{{/* 渲染每年的会议 */}}
-{{ range $year := $sortedYears }}
-  <h2 class="text-lg font-semibold mt-6 mb-2 border-b border-gray-300 pb-1">{{ $year }}</h2>
-  <ul class="list-disc list-inside space-y-2">
-    {{ range index $grouped $year }}
-      <li>
-        <span class="font-semibold">{{ .Title }}</span>
-        {{ with .Params.event }}
-          — <em>{{ . }}</em>
-        {{ end }}
-        <br>
-        {{ with .Params.location }}
-          📍 {{ . }}
-        {{ end }}
-        {{ with .Date }}
-          · {{ dateFormat "January 2, 2006" . }}
-        {{ end }}
-        {{ if and .Params.date_end (ne .Date .Params.date_end) }}
-          - {{ dateFormat "January 2, 2006" .Params.date_end }}
-        {{ end }}
-        <br>
-        {{ with .Params.presentation }}
-          <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">{{ . }}</span>
-        {{ end }}
-      </li>
+{{ if $talks }}
+  <p>找到 {{ len $talks }} 个 talk 条目</p>
+  
+  {{/* 按年份分组 */}}
+  {{ $grouped := dict }}
+  {{ $years := slice }}
+  {{ range $talks }}
+    {{ $year := (time .Date).Format "2006" }}
+    {{ $grouped = merge $grouped (dict $year (append (index $grouped $year | default slice) .)) }}
+    {{ if not (in $years $year) }}
+      {{ $years = $years | append $year }}
     {{ end }}
-  </ul>
+  {{ end }}
+
+  {{/* 按年份倒序排列 */}}
+  {{ $sortedYears := sort $years "desc" }}
+
+  {{/* 渲染每年的会议 */}}
+  {{ range $year := $sortedYears }}
+    <h2 class="text-lg font-semibold mt-6 mb-2 border-b border-gray-300 pb-1">{{ $year }}</h2>
+    <ul class="list-disc list-inside space-y-2">
+      {{ range index $grouped $year }}
+        <li>
+          <span class="font-semibold">{{ .Title }}</span>
+          {{ with .Params.event }}
+            — <em>{{ . }}</em>
+          {{ end }}
+          <br>
+          {{ with .Params.location }}
+            📍 {{ . }}
+          {{ end }}
+          {{ with .Date }}
+            · {{ dateFormat "January 2, 2006" . }}
+          {{ end }}
+          {{ if and .Params.date_end (ne .Date .Params.date_end) }}
+            - {{ dateFormat "January 2, 2006" .Params.date_end }}
+          {{ end }}
+          <br>
+          {{ with .Params.presentation }}
+            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">{{ . }}</span>
+          {{ end }}
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ else }}
+  <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
+    <h3 class="font-semibold text-yellow-800">调试信息</h3>
+    <p>没有找到任何 talk 内容。请检查：</p>
+    <ul class="list-disc list-inside mt-2 text-yellow-700">
+      <li>文件夹结构：<code>content/talk/2024-AGU/index.md</code></li>
+      <li>确保 front matter 中有 <code>date</code> 字段</li>
+      <li>确保 <code>draft: false</code> 或没有 draft 字段</li>
+      <li>运行 <code>hugo server --buildDrafts</code> 测试草稿内容</li>
+    </ul>
+    
+    <details class="mt-4">
+      <summary class="cursor-pointer font-medium">站点调试信息</summary>
+      <div class="mt-2 text-sm">
+        <p>所有内容类型: {{ range site.Sections }}{{ .Section }} {{ end }}</p>
+        <p>Talk 页面数量: {{ len (where site.RegularPages "Section" "talk") }}</p>
+      </div>
+    </details>
+  </div>
 {{ end }}

@@ -11,7 +11,9 @@ sections:
     content:
       title: "Conference and Workshop Presentations"
       # collection type (must match your content folder)
-      page_type: talk
+      # 尝试不指定 page_type，让它自动发现
+      # page_type: talk
+      # 或者尝试使用 folder 参数
       count: 20
       filters:
         exclude_featured: false
