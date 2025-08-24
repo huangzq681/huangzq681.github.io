@@ -1,23 +1,18 @@
-{{/* 调试：尝试不同的数据源 */}}
-{{ $talks := .Items }}
-{{ if not $talks }}
-  {{/* 尝试直接从 talk 内容类型获取 */}}
-  {{ $talks = where site.RegularPages "Type" "talk" }}
-{{ end }}
-{{ if not $talks }}
-  {{/* 尝试从所有页面中筛选 */}}
-  {{ $talks = where site.RegularPages "Section" "talk" }}
+{{/* 获取传入的项目数据 */}}
+{{ $items := .item }}
+{{ if not $items }}
+  {{ $items = .Items }}
 {{ end }}
 
-{{ if $talks }}
-  <p>找到 {{ len $talks }} 个 talk 条目</p>
-  
-  {{/* 按年份分组 */}}
+{{ if $items }}
+  {{/* 按年份分组会议数据 */}}
   {{ $grouped := dict }}
   {{ $years := slice }}
-  {{ range $talks }}
+  
+  {{ range $items }}
     {{ $year := (time .Date).Format "2006" }}
-    {{ $grouped = merge $grouped (dict $year (append (index $grouped $year | default slice) .)) }}
+    {{ $currentYearItems := index $grouped $year | default slice }}
+    {{ $grouped = merge $grouped (dict $year ($currentYearItems | append .)) }}
     {{ if not (in $years $year) }}
       {{ $years = $years | append $year }}
     {{ end }}
@@ -44,7 +39,8 @@
             · {{ dateFormat "January 2, 2006" . }}
           {{ end }}
           {{ if and .Params.date_end (ne .Date .Params.date_end) }}
-            - {{ dateFormat "January 2, 2006" .Params.date_end }}
+            {{ $endDate := time .Params.date_end }}
+            - {{ dateFormat "January 2, 2006" $endDate }}
           {{ end }}
           <br>
           {{ with .Params.presentation }}
@@ -56,21 +52,12 @@
   {{ end }}
 {{ else }}
   <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
-    <h3 class="font-semibold text-yellow-800">调试信息</h3>
-    <p>没有找到任何 talk 内容。请检查：</p>
-    <ul class="list-disc list-inside mt-2 text-yellow-700">
-      <li>文件夹结构：<code>content/talk/2024-AGU/index.md</code></li>
-      <li>确保 front matter 中有 <code>date</code> 字段</li>
-      <li>确保 <code>draft: false</code> 或没有 draft 字段</li>
-      <li>运行 <code>hugo server --buildDrafts</code> 测试草稿内容</li>
+    <p class="text-yellow-800">没有找到任何会议记录。</p>
+    <p class="text-sm text-yellow-600 mt-2">请确保：</p>
+    <ul class="list-disc list-inside text-sm text-yellow-600">
+      <li>content/talk/ 目录中有内容文件</li>
+      <li>内容文件包含必要的 front matter</li>
+      <li>文件没有设置 draft: true</li>
     </ul>
-    
-    <details class="mt-4">
-      <summary class="cursor-pointer font-medium">站点调试信息</summary>
-      <div class="mt-2 text-sm">
-        <p>所有内容类型: {{ range site.Sections }}{{ .Section }} {{ end }}</p>
-        <p>Talk 页面数量: {{ len (where site.RegularPages "Section" "talk") }}</p>
-      </div>
-    </details>
   </div>
 {{ end }}
