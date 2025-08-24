@@ -9,8 +9,7 @@ design:
 sections:
   - block: collection
     content:
-      title: "Talks"
-      subtitle: "Conference and Workshop Presentations"
+      title: "Conference and Workshop Presentations"
       # collection type (must match your content folder)
       page_type: talks
       count: 20
