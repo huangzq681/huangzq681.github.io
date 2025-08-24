@@ -12,9 +12,9 @@ sections:
       title: "Conference and Workshop Presentations"
       # collection type (must match your content folder)
       # 尝试不指定 page_type，让它自动发现
-      # page_type: talk
+      page_type: talk
       # 或者尝试使用 folder 参数
-      folder: talk
+      # folder: talk
       count: 20
       filters:
         exclude_featured: false
