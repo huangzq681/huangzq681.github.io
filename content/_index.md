@@ -62,7 +62,7 @@ sections:
   - block: collection
     id: papers
     content:
-      title: Recent Publications
+      title: Peer-reviewed journal articles
       text: ""
       filters:
         folders:

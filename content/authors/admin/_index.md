@@ -137,6 +137,12 @@ awards:
   - title: The 1st Prize of the 2nd Smart Water Conservancy Innovation Competition
     url: https://mp.weixin.qq.com/s?__biz=MzUzOTAzNzQxMg==&mid=2247502868&idx=1&sn=0ca086fb88be3ef70f50ecdbb7b4901f&chksm=facc179fcdbb9e8981ee060d7a7abb2ef103a7ed462d91a7e6f4bee67f9ac6d8fc7608faacc3&scene=27
     date: '2022-12-11'
+  - title: The President Scholarship (1/16)
+    date: '2023-09-01'
+  - title: The 1st Prize PhD Scholarship (1/16)
+    date: '2022-09-01'
+  - title: National Scholarship
+    date: '2024-11-01'
     # awarder: Coursera
     # icon: coursera
     # summary: |
