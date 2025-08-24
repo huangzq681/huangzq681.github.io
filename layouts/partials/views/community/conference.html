@@ -1,136 +1,113 @@
-{{/* 调试版本 - 显示分组过程 */}}
-{{ $allItems := slice }}
+{{/* 单个项目模板 - 简化版本 */}}
+{{ $item := .item }}
 
-{{/* 如果传入的是单个item */}}
-{{ if .item }}
-  {{ $allItems = slice .item }}
-{{/* 如果传入的是items列表 */}}
-{{ else if .items }}
-  {{ $allItems = .items }}
-{{/* 如果传入的是直接的页面列表 */}}
-{{ else if . }}
-  {{ $allItems = . }}
-{{ end }}
+{{ if $item }}
+  {{ $isValidTalk := false }}
 
-{{ if $allItems }}
-  {{/* 收集所有有效的talk项目 */}}
-  {{ $validItems := slice }}
+  {{/* 检查项目是否属于 talk 类型 */}}
+  {{ if and $item.File (strings.Contains $item.File.Path "talk/") }}
+    {{ $isValidTalk = true }}
+  {{ end }}
   
-  {{ range $allItems }}
-    {{ $item := . }}
-    {{ $isValidTalk := false }}
-
-    {{/* 检查项目是否属于 talk 类型 */}}
-    {{ if and $item.File (strings.Contains $item.File.Path "talk/") }}
-      {{ $isValidTalk = true }}
-    {{ end }}
-    
-    {{ if eq $item.Section "talk" }}
-      {{ $isValidTalk = true }}
-    {{ end }}
-    
-    {{ if eq $item.Type "talk" }}
-      {{ $isValidTalk = true }}
-    {{ end }}
-    
-    {{ if and $item.Params.event (or $item.Params.location $item.Params.presentation) }}
-      {{ $isValidTalk = true }}
-    {{ end }}
-
-    {{ if $isValidTalk }}
-      {{ $validItems = $validItems | append $item }}
-    {{ end }}
+  {{ if eq $item.Section "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+  
+  {{ if eq $item.Type "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+  
+  {{ if and $item.Params.event (or $item.Params.location $item.Params.presentation) }}
+    {{ $isValidTalk = true }}
   {{ end }}
 
-  {{ if $validItems }}
-    {{/* 调试：显示找到的项目和年份 */}}
-    <div class="bg-blue-50 border border-blue-200 rounded p-4 mb-4 text-sm">
-      <strong>调试信息：</strong><br>
-      找到 {{ len $validItems }} 个有效项目<br>
-      {{ range $validItems }}
-        - {{ .Title }}: {{ dateFormat "2006-01-02" .Date }} (年份: {{ dateFormat "2006" .Date }})<br>
-      {{ end }}
-    </div>
-    
-    {{/* 按日期倒序排序 */}}
-    {{ $sortedItems := sort $validItems "Date" "desc" }}
-    
-    {{/* 收集唯一年份 */}}
-    {{ $allYears := slice }}
-    {{ range $sortedItems }}
-      {{ $year := dateFormat "2006" .Date }}
-      {{ $allYears = $allYears | append $year }}
-    {{ end }}
-    {{ $uniqueYears := uniq $allYears }}
-    {{ $sortedYears := sort $uniqueYears "value" "desc" }}
-    
-    {{/* 调试：显示年份信息 */}}
-    <div class="bg-green-50 border border-green-200 rounded p-4 mb-4 text-sm">
-      <strong>年份信息：</strong><br>
-      所有年份: {{ delimit $allYears ", " }}<br>
-      唯一年份: {{ delimit $uniqueYears ", " }}<br>
-      排序后年份: {{ delimit $sortedYears ", " }}
-    </div>
-    
-    {{/* 按年份分组显示 */}}
-    {{ range $sortedYears }}
-      {{ $currentYear := . }}
+  {{ if $isValidTalk }}
+    <div class="talk-item mb-4 pl-2" data-year="{{ dateFormat "2006" $item.Date }}">
+      <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
       
-      <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $currentYear }}</h2>
-        <hr class="border-t-2 border-gray-300 mb-4">
+      {{ with $item.Params.event }}
+        <p class="text-gray-600 italic">{{ . }}</p>
+      {{ end }}
+      
+      <div class="text-sm text-gray-500 mt-1">
+        {{ with $item.Params.location }}
+          <span>{{ . }}</span>
+        {{ end }}
         
-        {{/* 显示这一年的所有项目 */}}
-        {{ range $sortedItems }}
-          {{ $item := . }}
-          {{ $itemYear := dateFormat "2006" $item.Date }}
-          
-          {{ if eq $itemYear $currentYear }}
-            <div class="mb-4 pl-2">
-              <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
-              
-              {{ with $item.Params.event }}
-                <p class="text-gray-600 italic">{{ . }}</p>
-              {{ end }}
-              
-              <div class="text-sm text-gray-500 mt-1">
-                {{ with $item.Params.location }}
-                  <span>{{ . }}</span>
-                {{ end }}
-                
-                {{ with $item.Date }}
-                  <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
-                {{ end }}
-                
-                {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
-                  {{ $endDate := time $item.Params.date_end }}
-                  <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
-                {{ end }}
-              </div>
-              
-              {{ with $item.Params.presentation }}
-                <div class="mt-2">
-                  <span class="text-sm text-gray-600">{{ . }}</span>
-                </div>
-              {{ end }}
-              
-              {{ with $item.Summary }}
-                <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
-              {{ end }}
-            </div>
-          {{ end }}
+        {{ with $item.Date }}
+          <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
+        {{ end }}
+        
+        {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
+          {{ $endDate := time $item.Params.date_end }}
+          <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
         {{ end }}
       </div>
-    {{ end }}
-    
-  {{ else }}
-    <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
-      <p class="text-yellow-800">没有找到符合条件的会议演示。</p>
+      
+      {{ with $item.Params.presentation }}
+        <div class="mt-2">
+          <span class="text-sm text-gray-600">{{ . }}</span>
+        </div>
+      {{ end }}
+      
+      {{ with $item.Summary }}
+        <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
+      {{ end }}
     </div>
   {{ end }}
-  
-{{ else }}
-  <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
-    <p class="text-yellow-800">没有找到项目数据。请检查调用方式。</p>
-  </div>
 {{ end }}
+
+{{/* JavaScript来处理年份分组 */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 查找所有talk项目
+  const talkItems = document.querySelectorAll('.talk-item');
+  if (talkItems.length === 0) return;
+  
+  // 按年份分组
+  const itemsByYear = {};
+  talkItems.forEach(item => {
+    const year = item.getAttribute('data-year');
+    if (!itemsByYear[year]) {
+      itemsByYear[year] = [];
+    }
+    itemsByYear[year].push(item);
+  });
+  
+  // 获取排序后的年份
+  const years = Object.keys(itemsByYear).sort((a, b) => b - a);
+  
+  // 创建分组结构
+  const container = talkItems[0].parentElement;
+  const fragment = document.createDocumentFragment();
+  
+  years.forEach(year => {
+    // 创建年份标题
+    const yearDiv = document.createElement('div');
+    yearDiv.className = 'mb-8';
+    
+    const yearTitle = document.createElement('h2');
+    yearTitle.className = 'text-2xl font-bold text-gray-800 mb-2';
+    yearTitle.textContent = year;
+    
+    const hr = document.createElement('hr');
+    hr.className = 'border-t-2 border-gray-300 mb-4';
+    
+    yearDiv.appendChild(yearTitle);
+    yearDiv.appendChild(hr);
+    
+    // 添加该年份的所有项目
+    itemsByYear[year].forEach(item => {
+      // 移除data-year属性，因为不再需要
+      item.removeAttribute('data-year');
+      yearDiv.appendChild(item);
+    });
+    
+    fragment.appendChild(yearDiv);
+  });
+  
+  // 清空容器并添加分组后的内容
+  container.innerHTML = '';
+  container.appendChild(fragment);
+});
+</script>
