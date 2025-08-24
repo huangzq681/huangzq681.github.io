@@ -11,7 +11,7 @@ subtitle: "Conference and Workshop Presentations"
 # 页面过滤器
 content:
   # 显示的文件夹
-  page_type: talk
+  page_type: talks
   filters:
     tag: ""
     category: ""
