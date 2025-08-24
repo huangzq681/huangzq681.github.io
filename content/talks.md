@@ -12,7 +12,7 @@ sections:
       title: "Talks"
       subtitle: "Conference and Workshop Presentations"
       # collection type (must match your content folder)
-      page_type: talk
+      page_type: talks
       count: 20
       filters:
         exclude_featured: false
