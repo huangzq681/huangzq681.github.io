@@ -1,30 +1,36 @@
+{{/* 按年份分组会议数据 */}}
 {{ $grouped := dict }}
 {{ range .Items }}
-  {{ $year := (time .Params.date).Format "2006" }}
-  {{ $grouped = merge $grouped (dict $year (append ($grouped.$year | default (slice)) .)) }}
+  {{ $year := (time .Date).Format "2006" }}
+  {{ $grouped = merge $grouped (dict $year (append (index $grouped $year | default slice) .)) }}
 {{ end }}
 
+{{/* 按年份倒序排列 */}}
 {{ $sortedYears := sort (keys $grouped) "desc" }}
 
+{{/* 渲染每年的会议 */}}
 {{ range $year := $sortedYears }}
   <h2 class="text-lg font-semibold mt-6 mb-2 border-b border-gray-300 pb-1">{{ $year }}</h2>
   <ul class="list-disc list-inside space-y-2">
-    {{ range $grouped.$year }}
+    {{ range index $grouped $year }}
       <li>
         <span class="font-semibold">{{ .Title }}</span>
-        {{ with .Params.conference }}
+        {{ with .Params.event }}
           — <em>{{ . }}</em>
         {{ end }}
         <br>
         {{ with .Params.location }}
-          {{ . }}
+          📍 {{ . }}
         {{ end }}
-        {{ with .Params.date }}
-          · {{ . }}
+        {{ with .Date }}
+          · {{ dateFormat "January 2, 2006" . }}
+        {{ end }}
+        {{ if and .Params.date_end (ne .Date .Params.date_end) }}
+          - {{ dateFormat "January 2, 2006" .Params.date_end }}
         {{ end }}
         <br>
-        {{ with .Params.type }}
-          {{ . }}
+        {{ with .Params.presentation }}
+          <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">{{ . }}</span>
         {{ end }}
       </li>
     {{ end }}
