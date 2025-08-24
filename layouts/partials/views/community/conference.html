@@ -29,7 +29,7 @@
         <p class="text-gray-600 italic">{{ . }}</p>
       {{ end }}
       
-      <div class="text-sm text-gray-500 mt-1">
+      <div class="text-base text-gray-600 italic mt-1">
         {{ with $item.Params.location }}
           <span>{{ . }}</span>
         {{ end }}
@@ -45,13 +45,13 @@
       </div>
       
       {{ with $item.Params.presentation }}
-        <div class="mt-2">
-          <span class="text-sm text-gray-600">{{ . }}</span>
+        <div class="mt-1">
+          <span class="text-base text-gray-600 italic">{{ . }}</span>
         </div>
       {{ end }}
       
       {{ with $item.Summary }}
-        <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
+        <p class="text-sm text-gray-600 italic mt-2">{{ . }}</p>
       {{ end }}
     </div>
   {{ end }}
