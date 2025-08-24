@@ -20,7 +20,6 @@ sections:
         dir: desc
     design:
       view: community/conference  # 可以改成 card、compact
-      group_by: "year"
 ---
 
 

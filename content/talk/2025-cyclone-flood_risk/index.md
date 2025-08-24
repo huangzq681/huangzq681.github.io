@@ -10,16 +10,12 @@ abstract: ""
 date: 2025-07-01
 date_end: 2025-07-01
 all_day: false
-publishDate: 2025-07-01T00:00:00Z
 authors: []
 tags: []
+# 确保这些字段存在
+publishDate: 2025-07-01
+draft: false
 featured: false
-url_pdf: ""
-url_slides: ""
-url_video: ""
-url_code: ""
-url_dataset: ""
-url_poster: ""
 # Presentation type
 presentation: "Oral (Invited)"
 ---
