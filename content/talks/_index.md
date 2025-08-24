@@ -2,7 +2,7 @@
 title: Talks
 date: 2025-08-24
 design:
-  css_class: container-fluid # 使用全宽容器
+  css_class: talks-page # 应用自定义类
 ---
 
 Below is a list of my recent talks and presentations:

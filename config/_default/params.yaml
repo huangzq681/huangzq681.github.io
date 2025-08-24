@@ -58,3 +58,6 @@ features:
     enable: false
   privacy_pack:
     enable: false
+
+# Custom CSS
+custom_css: ["custom.css"] # 放置在此处，作为顶级字段
