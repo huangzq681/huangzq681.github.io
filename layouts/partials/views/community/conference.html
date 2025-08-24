@@ -1,4 +1,4 @@
-{{/* 兼容单个item和多个items的调用方式 */}}
+{{/* 调试版本 - 显示分组过程 */}}
 {{ $allItems := slice }}
 
 {{/* 如果传入的是单个item */}}
@@ -43,10 +43,19 @@
   {{ end }}
 
   {{ if $validItems }}
+    {{/* 调试：显示找到的项目和年份 */}}
+    <div class="bg-blue-50 border border-blue-200 rounded p-4 mb-4 text-sm">
+      <strong>调试信息：</strong><br>
+      找到 {{ len $validItems }} 个有效项目<br>
+      {{ range $validItems }}
+        - {{ .Title }}: {{ dateFormat "2006-01-02" .Date }} (年份: {{ dateFormat "2006" .Date }})<br>
+      {{ end }}
+    </div>
+    
     {{/* 按日期倒序排序 */}}
     {{ $sortedItems := sort $validItems "Date" "desc" }}
     
-    {{/* 手动分组：先收集所有唯一年份 */}}
+    {{/* 收集唯一年份 */}}
     {{ $allYears := slice }}
     {{ range $sortedItems }}
       {{ $year := dateFormat "2006" .Date }}
@@ -54,6 +63,14 @@
     {{ end }}
     {{ $uniqueYears := uniq $allYears }}
     {{ $sortedYears := sort $uniqueYears "value" "desc" }}
+    
+    {{/* 调试：显示年份信息 */}}
+    <div class="bg-green-50 border border-green-200 rounded p-4 mb-4 text-sm">
+      <strong>年份信息：</strong><br>
+      所有年份: {{ delimit $allYears ", " }}<br>
+      唯一年份: {{ delimit $uniqueYears ", " }}<br>
+      排序后年份: {{ delimit $sortedYears ", " }}
+    </div>
     
     {{/* 按年份分组显示 */}}
     {{ range $sortedYears }}
