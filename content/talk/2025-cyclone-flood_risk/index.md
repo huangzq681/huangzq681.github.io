@@ -2,12 +2,12 @@
 title: "HHHHHHe"
 event: "AGU Fall Meeting"
 location: "Washington, DC, USA"
-date: 2025-12-01
-date_end: 2025-12-01
+date: 2025-07-01
+date_end: 2025-07-01
 presentation: "Oral"
 
 # 这些字段很重要
-publishDate: 2025-12-01
+publishDate: 2025-07-01
 draft: false
 featured: false
 type: talk
