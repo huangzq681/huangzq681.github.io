@@ -11,6 +11,7 @@ publishDate: 2025-12-01
 draft: false
 featured: false
 type: talk
+section: talk
 
 # 可选字段
 summary: "Presentation on cascading flood hazards in the context of climate change."
