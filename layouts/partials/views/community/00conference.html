@@ -67,37 +67,42 @@
       {{ end }}
 
       <div class="mb-4 pl-2">
-        <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
-        
-        {{ with $item.Params.event }}
-          <p class="text-gray-600 italic">{{ . }}</p>
-        {{ end }}
-        
-        <div class="text-sm text-gray-500 mt-1">
-          {{ with $item.Params.location }}
-            <span>{{ . }}</span>
+      <!-- <div class="mb-4 border border-gray-200 rounded p-3">
+        <div class="pl-2"> -->
+          <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
+          
+          {{ with $item.Params.event }}
+            <p class="text-gray-600 italic">{{ . }}</p>
           {{ end }}
           
-          {{ with $item.Date }}
-            <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
+          <div class="text-sm text-gray-500 mt-1">
+            {{ with $item.Params.location }}
+              <span>📍 {{ . }}</span>
+            {{ end }}
+            
+            {{ with $item.Date }}
+              <span class="ml-2">📅 {{ dateFormat "January 2, 2006" . }}</span>
+            {{ end }}
+            
+            {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
+              {{ $endDate := time $item.Params.date_end }}
+              <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+            {{ end }}
+          </div>
+          
+          {{ with $item.Params.presentation }}
+            <div class="mt-2">
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
+                {{ . }}
+              </span>
+            </div>
           {{ end }}
           
-          {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
-            {{ $endDate := time $item.Params.date_end }}
-            <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+          {{ with $item.Summary }}
+            <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
           {{ end }}
         </div>
-        
-        {{ with $item.Params.presentation }}
-          <div class="mt-2">
-            <span class="text-xs text-gray-600">{{ . }}</span>
-          </div>
-        {{ end }}
-        
-        {{ with $item.Summary }}
-          <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
-        {{ end }}
-      </div>
+      <!-- </div> -->
     {{ end }}
     
     {{/* 关闭最后一个年份组 */}}
