@@ -16,5 +16,3 @@ section: talk
 # 可选字段
 # summary: "Presentation on cascading flood hazards in the context of climate change."
 ---
-
-This is the content of the talk.

@@ -46,64 +46,70 @@
     {{/* 按日期倒序排序 */}}
     {{ $sortedItems := sort $validItems "Date" "desc" }}
     
-    {{/* 按年份分组显示 */}}
-    {{ $currentYear := "" }}
-    
+    {{/* 按年份分组 */}}
+    {{ $itemsByYear := dict }}
     {{ range $sortedItems }}
-      {{ $item := . }}
-      {{ $itemYear := dateFormat "2006" $item.Date }}
-      
-      {{/* 如果年份变化，显示新的年份标题 */}}
-      {{ if ne $currentYear $itemYear }}
-        {{ if ne $currentYear "" }}
-          </div>
-        {{ end }}
-        
-        <div class="mb-8">
-          <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $itemYear }}</h2>
-          <hr class="border-t-2 border-gray-300 mb-4">
-        
-        {{ $currentYear = $itemYear }}
+      {{ $year := dateFormat "2006" .Date }}
+      {{ $yearItems := index $itemsByYear $year | default slice }}
+      {{ $yearItems = $yearItems | append . }}
+      {{ $itemsByYear = merge $itemsByYear (dict $year $yearItems) }}
+    {{ end }}
+    
+    {{/* 获取所有年份并按倒序排列 */}}
+    {{ $years := slice }}
+    {{ range $itemsByYear }}
+      {{ range $key, $value := . }}
+        {{ $years = $years | append $key }}
       {{ end }}
+    {{ end }}
+    {{ $years = sort (uniq $years) "value" "desc" }}
+    
+    {{/* 按年份分组显示 */}}
+    {{ range $years }}
+      {{ $year := . }}
+      {{ $yearItems := index $itemsByYear $year }}
+      
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-2">{{ $year }}</h2>
+        <hr class="border-t-2 border-gray-300 mb-4">
+        
+        {{ range $yearItems }}
 
-      <div class="mb-4 pl-2">
-        <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
-        
-        {{ with $item.Params.event }}
-          <p class="text-gray-600 italic">{{ . }}</p>
-        {{ end }}
-        
-        <div class="text-base text-gray-500 mt-1">
-          {{ with $item.Params.location }}
-            <span>{{ . }}</span>
+        {{ $item := . }}
+        <div class="mb-4 pl-2">
+          <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
+          
+          {{ with $item.Params.event }}
+            <p class="text-gray-600 italic">{{ . }}</p>
           {{ end }}
           
-          {{ with $item.Date }}
-            <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
+          <div class="text-sm text-gray-500 mt-1">
+            {{ with $item.Params.location }}
+              <span>{{ . }}</span>
+            {{ end }}
+            
+            {{ with $item.Date }}
+              <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
+            {{ end }}
+            
+            {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
+              {{ $endDate := time $item.Params.date_end }}
+              <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+            {{ end }}
+          </div>
+          
+          {{ with $item.Params.presentation }}
+            <div class="mt-2">
+              <span class="text-sm text-gray-600">{{ . }}</span>
+            </div>
           {{ end }}
           
-          {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
-            {{ $endDate := time $item.Params.date_end }}
-            <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+          {{ with $item.Summary }}
+            <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
           {{ end }}
         </div>
-        
-        {{ with $item.Params.presentation }}
-          <div class="mt-2">
-            <span class="text-base text-gray-600">{{ . }}</span>
-          </div>
-        {{ end }}
-        
-        {{ with $item.Summary }}
-          <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
         {{ end }}
       </div>
-    {{ end }}
-    
-    {{/* 关闭最后一个年份组 */}}
-    {{ if ne $currentYear "" }}
-      </div>
-    {{ end }}
   {{ else }}
     <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
       <p class="text-yellow-800">没有找到符合条件的会议演示。</p>
