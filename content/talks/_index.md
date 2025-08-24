@@ -7,6 +7,11 @@ weight: 20
 
 title: "Talks"
 subtitle: "Conference and Workshop Presentations"
+layout: list
+menu:
+  main:
+    name: Talks
+    weight: 30
 
 # 页面过滤器
 content:
