@@ -1,3 +1,15 @@
+{{/* 调试信息 */}}
+{{ if .Items }}
+  <p>找到 {{ len .Items }} 个条目</p>
+{{ else }}
+  <p>没有找到任何条目。检查：</p>
+  <ul>
+    <li>page_type 是否设置为 "talk"</li>
+    <li>talk 文件夹中是否有内容</li>
+    <li>内容文件是否有正确的 front matter</li>
+  </ul>
+{{ end }}
+
 {{/* 按年份分组会议数据 */}}
 {{ $grouped := dict }}
 {{ $years := slice }}
