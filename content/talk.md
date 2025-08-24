@@ -14,6 +14,7 @@ sections:
       # 尝试不指定 page_type，让它自动发现
       # page_type: talk
       # 或者尝试使用 folder 参数
+      folder: talk
       count: 20
       filters:
         exclude_featured: false
@@ -21,7 +22,10 @@ sections:
         by: date
         dir: desc
     design:
-      view: community/conference  # 可以改成 card、compact
+      view: community/conference
+      # 添加这个来启用按年份分组
+      group_by: date
+      group_by_format: "2006"
 ---
 
 

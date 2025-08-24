@@ -1,63 +1,57 @@
-{{/* 获取传入的项目数据 */}}
-{{ $items := .item }}
-{{ if not $items }}
-  {{ $items = .Items }}
-{{ end }}
+{{/* Hugo Blox collection view 模板 */}}
+{{/* 在 Hugo Blox 中，每个项目单独传递，而不是批量处理 */}}
 
-{{ if $items }}
-  {{/* 按年份分组会议数据 */}}
-  {{ $grouped := dict }}
-  {{ $years := slice }}
+{{ $item := .item }}
+
+{{ if $item }}
+  {{/* 对于单个项目，我们需要不同的处理方式 */}}
+  {{/* 这个模板会为每个项目单独调用 */}}
   
-  {{ range $items }}
-    {{ $year := (time .Date).Format "2006" }}
-    {{ $currentYearItems := index $grouped $year | default slice }}
-    {{ $grouped = merge $grouped (dict $year ($currentYearItems | append .)) }}
-    {{ if not (in $years $year) }}
-      {{ $years = $years | append $year }}
-    {{ end }}
-  {{ end }}
-
-  {{/* 按年份倒序排列 */}}
-  {{ $sortedYears := sort $years "desc" }}
-
-  {{/* 渲染每年的会议 */}}
-  {{ range $year := $sortedYears }}
-    <h2 class="text-lg font-semibold mt-6 mb-2 border-b border-gray-300 pb-1">{{ $year }}</h2>
-    <ul class="list-disc list-inside space-y-2">
-      {{ range index $grouped $year }}
-        <li>
-          <span class="font-semibold">{{ .Title }}</span>
-          {{ with .Params.event }}
-            — <em>{{ . }}</em>
-          {{ end }}
-          <br>
-          {{ with .Params.location }}
-            📍 {{ . }}
-          {{ end }}
-          {{ with .Date }}
-            · {{ dateFormat "January 2, 2006" . }}
-          {{ end }}
-          {{ if and .Params.date_end (ne .Date .Params.date_end) }}
-            {{ $endDate := time .Params.date_end }}
-            - {{ dateFormat "January 2, 2006" $endDate }}
-          {{ end }}
-          <br>
-          {{ with .Params.presentation }}
-            <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">{{ . }}</span>
-          {{ end }}
-        </li>
+  {{ $year := (time $item.Date).Format "2006" }}
+  
+  {{/* 检查是否需要显示年份标题 */}}
+  {{/* 注意：在 Hugo Blox 中，每个项目单独渲染，所以我们需要简化逻辑 */}}
+  
+  <div class="mb-4">
+    {{/* 只显示项目信息，年份分组由 Hugo Blox 处理 */}}
+    <div class="border-l-4 border-blue-500 pl-4">
+      <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
+      
+      {{ with $item.Params.event }}
+        <p class="text-gray-600 italic">{{ . }}</p>
       {{ end }}
-    </ul>
-  {{ end }}
+      
+      <div class="text-sm text-gray-500 mt-1">
+        {{ with $item.Params.location }}
+          <span>📍 {{ . }}</span>
+        {{ end }}
+        
+        {{ with $item.Date }}
+          <span class="ml-2">📅 {{ dateFormat "January 2, 2006" . }}</span>
+        {{ end }}
+        
+        {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
+          {{ $endDate := time $item.Params.date_end }}
+          <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+        {{ end }}
+      </div>
+      
+      {{ with $item.Params.presentation }}
+        <div class="mt-2">
+          <span class="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded">
+            {{ . }}
+          </span>
+        </div>
+      {{ end }}
+      
+      {{ with $item.Summary }}
+        <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
+      {{ end }}
+    </div>
+  </div>
+  
 {{ else }}
   <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
-    <p class="text-yellow-800">没有找到任何会议记录。</p>
-    <p class="text-sm text-yellow-600 mt-2">请确保：</p>
-    <ul class="list-disc list-inside text-sm text-yellow-600">
-      <li>content/talk/ 目录中有内容文件</li>
-      <li>内容文件包含必要的 front matter</li>
-      <li>文件没有设置 draft: true</li>
-    </ul>
+    <p class="text-yellow-800">没有找到会议数据。</p>
   </div>
 {{ end }}
