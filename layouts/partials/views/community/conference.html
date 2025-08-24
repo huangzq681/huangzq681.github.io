@@ -60,54 +60,77 @@
 {{/* JavaScript来处理年份分组 */}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 查找所有talk项目
-  const talkItems = document.querySelectorAll('.talk-item');
-  if (talkItems.length === 0) return;
-  
-  // 按年份分组
-  const itemsByYear = {};
-  talkItems.forEach(item => {
-    const year = item.getAttribute('data-year');
-    if (!itemsByYear[year]) {
-      itemsByYear[year] = [];
-    }
-    itemsByYear[year].push(item);
-  });
-  
-  // 获取排序后的年份
-  const years = Object.keys(itemsByYear).sort((a, b) => b - a);
-  
-  // 创建分组结构
-  const container = talkItems[0].parentElement;
-  const fragment = document.createDocumentFragment();
-  
-  years.forEach(year => {
-    // 创建年份标题
-    const yearDiv = document.createElement('div');
-    yearDiv.className = 'mb-8';
+  // 延迟执行，确保所有内容都加载完成
+  setTimeout(function() {
+    // 查找所有talk项目
+    const talkItems = document.querySelectorAll('.talk-item');
+    if (talkItems.length === 0) return;
     
-    const yearTitle = document.createElement('h2');
-    yearTitle.className = 'text-2xl font-bold text-gray-800 mb-2';
-    yearTitle.textContent = year;
+    console.log('找到', talkItems.length, '个talk项目');
     
-    const hr = document.createElement('hr');
-    hr.className = 'border-t-2 border-gray-300 mb-4';
-    
-    yearDiv.appendChild(yearTitle);
-    yearDiv.appendChild(hr);
-    
-    // 添加该年份的所有项目
-    itemsByYear[year].forEach(item => {
-      // 移除data-year属性，因为不再需要
-      item.removeAttribute('data-year');
-      yearDiv.appendChild(item);
+    // 按年份分组
+    const itemsByYear = {};
+    talkItems.forEach(item => {
+      const year = item.getAttribute('data-year');
+      console.log('项目年份:', year, '项目标题:', item.querySelector('h3').textContent);
+      
+      // 跳过无效年份
+      if (!year || year === 'null' || year === '') {
+        console.log('跳过无效年份的项目');
+        return;
+      }
+      
+      if (!itemsByYear[year]) {
+        itemsByYear[year] = [];
+      }
+      itemsByYear[year].push(item);
     });
     
-    fragment.appendChild(yearDiv);
-  });
-  
-  // 清空容器并添加分组后的内容
-  container.innerHTML = '';
-  container.appendChild(fragment);
+    console.log('分组结果:', itemsByYear);
+    
+    // 获取排序后的年份，只包含有内容的年份
+    const years = Object.keys(itemsByYear).filter(year => itemsByYear[year].length > 0).sort((a, b) => b - a);
+    console.log('有效年份:', years);
+    
+    if (years.length === 0) {
+      console.log('没有找到有效的年份分组');
+      return;
+    }
+    
+    // 创建分组结构
+    const container = talkItems[0].parentElement;
+    const fragment = document.createDocumentFragment();
+    
+    years.forEach(year => {
+      // 创建年份标题
+      const yearDiv = document.createElement('div');
+      yearDiv.className = 'mb-8';
+      
+      const yearTitle = document.createElement('h2');
+      yearTitle.className = 'text-2xl font-bold text-gray-800 mb-2';
+      yearTitle.textContent = year;
+      
+      const hr = document.createElement('hr');
+      hr.className = 'border-t-2 border-gray-300 mb-4';
+      
+      yearDiv.appendChild(yearTitle);
+      yearDiv.appendChild(hr);
+      
+      // 添加该年份的所有项目
+      itemsByYear[year].forEach(item => {
+        // 移除data-year属性，因为不再需要
+        item.removeAttribute('data-year');
+        yearDiv.appendChild(item.cloneNode(true));
+      });
+      
+      fragment.appendChild(yearDiv);
+    });
+    
+    // 清空容器并添加分组后的内容
+    container.innerHTML = '';
+    container.appendChild(fragment);
+    
+    console.log('分组完成');
+  }, 100);
 });
 </script>
