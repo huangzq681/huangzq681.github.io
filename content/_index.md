@@ -92,6 +92,23 @@ sections:
   #   design:
   #     view: article-grid
   #     columns: 1
+
+  - block: collection
+    id: conferences
+    content:
+      title: "Conference and Workshop Presentations"
+      page_type: talk
+      count: 20
+      filters:
+        exclude_featured: false
+      order:
+        by: date
+        dir: desc
+    design:
+      view: community/conference
+      group_by: date
+      group_by_format: "2006"
+
   - block: collection
     id: news
     content:
