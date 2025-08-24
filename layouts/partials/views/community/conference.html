@@ -1,19 +1,35 @@
-{{/* Hugo Blox collection view 模板 */}}
-{{/* 在 Hugo Blox 中，每个项目单独传递，而不是批量处理 */}}
+{{/* Hugo Blox collection view 模板 - 只显示 talk 类型的内容 */}}
 
 {{ $item := .item }}
 
+{{/* 检查项目是否属于 talk 类型 */}}
+{{ $isValidTalk := false }}
+
+{{/* 检查多个条件来确认这是一个 talk */}}
 {{ if $item }}
-  {{/* 对于单个项目，我们需要不同的处理方式 */}}
-  {{/* 这个模板会为每个项目单独调用 */}}
+  {{/* 方法1: 检查文件路径 */}}
+  {{ if and $item.File (strings.Contains $item.File.Path "talk/") }}
+    {{ $isValidTalk = true }}
+  {{ end }}
   
-  {{ $year := (time $item.Date).Format "2006" }}
+  {{/* 方法2: 检查 Section */}}
+  {{ if eq $item.Section "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
   
-  {{/* 检查是否需要显示年份标题 */}}
-  {{/* 注意：在 Hugo Blox 中，每个项目单独渲染，所以我们需要简化逻辑 */}}
+  {{/* 方法3: 检查 Type */}}
+  {{ if eq $item.Type "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
   
+  {{/* 方法4: 检查是否有会议相关的参数 */}}
+  {{ if and $item.Params.event (or $item.Params.location $item.Params.presentation) }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+{{ end }}
+
+{{ if and $item $isValidTalk }}
   <div class="mb-4">
-    {{/* 只显示项目信息，年份分组由 Hugo Blox 处理 */}}
     <div class="border-l-4 border-blue-500 pl-4">
       <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
       
@@ -48,10 +64,5 @@
         <p class="text-sm text-gray-600 mt-2">{{ . }}</p>
       {{ end }}
     </div>
-  </div>
-  
-{{ else }}
-  <div class="bg-yellow-50 border border-yellow-200 rounded p-4">
-    <p class="text-yellow-800">没有找到会议数据。</p>
   </div>
 {{ end }}
