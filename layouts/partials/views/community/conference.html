@@ -1,12 +1,16 @@
 {{/* 按年份分组会议数据 */}}
 {{ $grouped := dict }}
+{{ $years := slice }}
 {{ range .Items }}
   {{ $year := (time .Date).Format "2006" }}
   {{ $grouped = merge $grouped (dict $year (append (index $grouped $year | default slice) .)) }}
+  {{ if not (in $years $year) }}
+    {{ $years = $years | append $year }}
+  {{ end }}
 {{ end }}
 
 {{/* 按年份倒序排列 */}}
-{{ $sortedYears := sort (keys $grouped) "desc" }}
+{{ $sortedYears := sort $years "desc" }}
 
 {{/* 渲染每年的会议 */}}
 {{ range $year := $sortedYears }}
