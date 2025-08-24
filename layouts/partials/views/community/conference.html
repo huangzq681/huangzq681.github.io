@@ -1,34 +1,32 @@
-{{/* layouts/partials/views/community/conference.html */}}
-<div class="space-y-6">
-  {{ $items := .items }}
+{{ $grouped := dict }}
+{{ range .Items }}
+  {{ $year := (time .Params.date).Format "2006" }}
+  {{ $grouped = merge $grouped (dict $year (append ($grouped.$year | default (slice)) .)) }}
+{{ end }}
 
-  {{/* 按年份分组 */}}
-  {{ range $year, $pages := group $items "Date.Format" "2006" }}
-    <div class="pb-4">
-      <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2 border-b border-gray-300 dark:border-gray-700">
-        {{ $year }}
-      </h2>
-      <ul class="list-disc list-inside space-y-2">
-        {{ range $pages }}
-          <li>
-            <div class="text-base">
-              <span class="font-semibold">{{ .Title }}</span>
-              {{ with .Params.event }} — <span class="italic">{{ . }}</span>{{ end }}
-              {{ with .Params.location }} ({{ . }}){{ end }}
-            </div>
-            {{ with .Params.authors }}
-              <div class="text-sm text-gray-600 dark:text-gray-400">
-                {{ . }}
-              </div>
-            {{ end }}
-            {{ with .Params.abstract }}
-              <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                {{ . }}
-              </div>
-            {{ end }}
-          </li>
+{{ $sortedYears := sort (keys $grouped) "desc" }}
+
+{{ range $year := $sortedYears }}
+  <h2 class="text-lg font-semibold mt-6 mb-2 border-b border-gray-300 pb-1">{{ $year }}</h2>
+  <ul class="list-disc list-inside space-y-2">
+    {{ range $grouped.$year }}
+      <li>
+        <span class="font-semibold">{{ .Title }}</span>
+        {{ with .Params.conference }}
+          — <em>{{ . }}</em>
         {{ end }}
-      </ul>
-    </div>
-  {{ end }}
-</div>
+        <br>
+        {{ with .Params.location }}
+          {{ . }}
+        {{ end }}
+        {{ with .Params.date }}
+          · {{ . }}
+        {{ end }}
+        <br>
+        {{ with .Params.type }}
+          {{ . }}
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}
