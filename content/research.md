@@ -25,7 +25,7 @@ sections:
         .news-content img {
           margin-top: 5px;
           margin-bottom: 15px;
-          width: 80%;  /* 调整为80%宽度 */
+          width: 100%;  /* 调整为100%宽度 */
           height: auto;  /* 保持比例 */
           display: block;
           margin-left: auto;
@@ -53,9 +53,13 @@ sections:
         ### Impacts of Climate Change and ENSO variabilities on Snow droughts in Asian Water Tower
         
         The Tibetan Plateau has experienced increasingly unprecedented snow droughts under climate warming, raising concerns about regional ecosystem sustainability and water resource security. While warming and drying are primary drivers, the specific roles of anthropogenic warming and climate variability in affecting these drivers and, consequently, the occurrence of snow drought remain unknown. In this study, we incorporated multi-source snowpack data and leveraged climate simulations to provide a detailed analysis of snow drought occurrence and trends across the TP. Our results provide critical insights into the driving mechanisms of snow droughts in this climate-sensitive region, aiming to support decision-makers in advancing climate resilience and sustainable water management. (Under review)
-        ![Snow_drought](Snow_drought.svg "")
+        ![Snow_drought](Snow_drought.svg "Fig 1. Snow drought characteristics in TP.")
         
-        ### 
+        ### A Lagrangian Investigation of the Physical Processes of Heatwaves in South China
+
+        In the context of global warming, the growing frequency of heatwaves poses significant risks to agriculture production, water resource management, and public health. While previous studies have primarily relied on composite analyses of background atmospheric circulation to characterize dry and wet heatwaves, they provide limited insight into the underlying physical processes. Meanwhile, the sources and transport of heat and moisture in heatwave dynamics remain unresolved. Here, we applied Lagrangian backward tracking and heat budget decompositions to provide a complete picture of source regions, typical transport patterns, and physical  processes in the air masses for different temperature extremes.
+        ![traj_AMU_AHU](traj_plot_event_merged.svg "Fig 2. The trajectories density (1st column), accumulated heat uptake (2nd column), and accumulated moisture uptake (3rd column) associated with typical dry and wet heatwaves.")
+        ![T_anom_budget](T_anom_budget_2022.svg "Fig 3. Temperature anomaly decomposition for the 2022 dry heatwave.")
         
         ### Future Directions
         
