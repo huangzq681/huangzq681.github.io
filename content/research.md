@@ -15,7 +15,27 @@ sections:
       title: 'Research Overview'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
+        # <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
+        <div style="font-size: 0.8em; line-height: 1.5;">
+        <style>
+        .news-content {
+          width: 150%;
+          margin-left: -25%;
+        }
+        @media (max-width: 768px) {
+          .news-content {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+        @media (max-width: 480px) {
+          .news-content {
+            width: 95%;
+            margin-left: 2.5%;
+          }
+        }
+        </style>
+        <div class="news-content">
 
         I am particularly interested in multi-disciplinary climate change fields. My research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of my research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, I am also interested in how these extremes affect the ecology, human, and socioeconomic systems.  
         
@@ -60,6 +80,7 @@ sections:
         2. **High-resolution climate modeling** at regional scales  
         3. **Interdisciplinary collaborations** bridging climate science and policy
         
+        </div>
         </div>
     design:
       columns: '1'

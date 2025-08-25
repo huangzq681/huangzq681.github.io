@@ -39,12 +39,34 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 2.0; width: 150%; margin-left: -25%;">
+        # <div style="font-size: 0.8em; line-height: 2.0; width: 150%; margin-left: -25%;">
+        <div style="font-size: 0.8em; line-height: 1.5;">
+        <style>
+        .news-content {
+          width: 150%;
+          margin-left: -25%;
+        }
+        @media (max-width: 768px) {
+          .news-content {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+        @media (max-width: 480px) {
+          .news-content {
+            width: 95%;
+            margin-left: 2.5%;
+          }
+        }
+        </style>
+        <div class="news-content">
+
         I am particularly interested in multi-disciplinary climate change fields. My research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of my research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, I am also interested in how these extremes affect the ecology, human, and socioeconomic systems.  
         
         Besides the traditional analyzing methods, I am very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes.
 
         [[More]](research/)
+        </div>
         </div>
       design:
         columns: '1'
@@ -120,8 +142,28 @@ sections:
       title: 'News'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
-
+        # <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
+        <div style="font-size: 0.8em; line-height: 1.5;">
+        <style>
+        .news-content {
+          width: 150%;
+          margin-left: -25%;
+        }
+        @media (max-width: 768px) {
+          .news-content {
+            width: 100%;
+            margin-left: 0;
+          }
+        }
+        @media (max-width: 480px) {
+          .news-content {
+            width: 95%;
+            margin-left: 2.5%;
+          }
+        }
+        </style>
+        <div class="news-content">
+        
         * 2024-11 — I received the National Scholarship (Top Student Award in China). [[Link]](your-link-here)
 
         * 2024-07 — I was awarded the CSC (China Scholarship Council) scholarship to pursue joint education at The University of Tokyo.
@@ -130,6 +172,7 @@ sections:
 
         * 2022-12 — We won the 1st Prize of the 2nd Smart Water Conservancy Innovation Competition. [[Link]](https://mp.weixin.qq.com/s?__biz=MzUzOTAzNzQxMg==&mid=2247502868&idx=1&sn=0ca086fb88be3ef70f50ecdbb7b4901f&chksm=facc179fcdbb9e8981ee060d7a7abb2ef103a7ed462d91a7e6f4bee67f9ac6d8fc7608faacc3&scene=27)
 
+        </div>
         </div>
     design:
       columns: '1'
