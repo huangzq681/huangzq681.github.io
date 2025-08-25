@@ -22,6 +22,10 @@ sections:
           width: 150%;
           margin-left: -25%;
         }
+        .news-content img {
+          margin-top: 10px;
+          margin-bottom: 18px;
+        }
         @media (max-width: 768px) {
           .news-content {
             width: 100%;
@@ -45,7 +49,6 @@ sections:
         
         The Tibetan Plateau has experienced increasingly unprecedented snow droughts under climate warming, raising concerns about regional ecosystem sustainability and water resource security. While warming and drying are primary drivers, the specific roles of anthropogenic warming and climate variability in affecting these drivers and, consequently, the occurrence of snow drought remain unknown. In this study, we incorporated multi-source snowpack data and leveraged climate simulations to provide a detailed analysis of snow drought occurrence and trends across the TP. Our results provide critical insights into the driving mechanisms of snow droughts in this climate-sensitive region, aiming to support decision-makers in advancing climate resilience and sustainable water management. (Under review)
         ![Snow_drought](Snow_drought.svg "")
-        {{< figure src="/assets/media/Snow_drought.svg" alt="Snow drought" width="100%" class="no-margin-top" >}}
         
         ### 
         
