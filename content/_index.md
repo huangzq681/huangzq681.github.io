@@ -116,16 +116,17 @@ sections:
       title: 'News'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin: 0 auto;">
+        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
+
         * 2025-04 — One Earth paper published: Bangladesh storm-tide hazards (with Ravela & Emanuel). （[Link](your-paper-link-here)）
 
         * 2025-03 — Invited talk at Climate Research Symposium, University of Tokyo.
 
         * 2025-02 — New collaboration with MIT on extreme weather prediction models.
 
-        - 2025-01 — Featured in Nature Climate Change: "Hydrological extremes in Asia-Pacific region". [Link](your-link-here)
+        * 2025-01 — Featured in Nature Climate Change: "Hydrological extremes in Asia-Pacific region". [Link](your-link-here)
 
-        - 2024-12 — Received Best Paper Award at AGU Fall Meeting 2024.
+        * 2024-12 — Received Best Paper Award at AGU Fall Meeting 2024.
         </div>
     design:
       columns: '1'
