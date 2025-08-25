@@ -23,8 +23,13 @@ sections:
           margin-left: -25%;
         }
         .news-content img {
-          margin-top: 10px;
-          margin-bottom: 18px;
+          margin-top: 5px;
+          margin-bottom: 15px;
+          width: 80%;  /* 调整为80%宽度 */
+          height: auto;  /* 保持比例 */
+          display: block;
+          margin-left: auto;
+          margin-right: auto;  /* 居中显示 */
         }
         @media (max-width: 768px) {
           .news-content {
