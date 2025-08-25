@@ -39,7 +39,7 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin: 0 auto;">
+        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
         I am particularly interested in multi-disciplinary climate change fields. My research topics aim to understand the role of water and the associated hydrological processes in regulating global environmental changes in the present and future. While much of my research focuses on the physical mechanisms in climate extremes, e.g., extreme precipitation, heatwaves, floods, and wildfires, I am also interested in how these extremes affect the ecology, human, and socioeconomic systems.  
         Besides the traditional analyzing methods, I am very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes.
         </div>
@@ -112,11 +112,12 @@ sections:
       group_by_format: "2006"
   
   - block: markdown
+    id: news
     content:
       title: 'News'
       subtitle: ''
       text: |-
-        <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
+        <div style="font-size: 0.8em; line-height: 2; width: 150%; margin-left: -25%;">
 
         * 2025-04 — One Earth paper published: Bangladesh storm-tide hazards (with Ravela & Emanuel). （[Link](your-paper-link-here)）
 
