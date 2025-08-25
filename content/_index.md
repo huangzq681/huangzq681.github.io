@@ -122,15 +122,14 @@ sections:
       text: |-
         <div style="font-size: 0.8em; line-height: 1.5; width: 150%; margin-left: -25%;">
 
-        * 2025-04 — One Earth paper published: Bangladesh storm-tide hazards (with Ravela & Emanuel). （[Link](your-paper-link-here)）
+        * 2024-11 — I received the National Scholarship (Top Student Award in China). [[Link]](your-link-here)
 
-        * 2025-03 — Invited talk at Climate Research Symposium, University of Tokyo.
+        * 2024-07 — I was awarded the CSC (China Scholarship Council) scholarship to pursue joint education at The University of Tokyo.
 
-        * 2025-02 — New collaboration with MIT on extreme weather prediction models.
+        * 2023-07 - Nature Water paper published!
 
-        * 2025-01 — Featured in Nature Climate Change: "Hydrological extremes in Asia-Pacific region". [Link](your-link-here)
+        * 2022-12 — We won the 1st Prize of the 2nd Smart Water Conservancy Innovation Competition. [[Link]](https://mp.weixin.qq.com/s?__biz=MzUzOTAzNzQxMg==&mid=2247502868&idx=1&sn=0ca086fb88be3ef70f50ecdbb7b4901f&chksm=facc179fcdbb9e8981ee060d7a7abb2ef103a7ed462d91a7e6f4bee67f9ac6d8fc7608faacc3&scene=27)
 
-        * 2024-12 — Received Best Paper Award at AGU Fall Meeting 2024.
         </div>
     design:
       columns: '1'
