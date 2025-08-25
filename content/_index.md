@@ -114,7 +114,9 @@ sections:
       title: 'News'
       subtitle: ''
       text: |-
-        · 2025-04 — One Earth paper published: Bangladesh storm-tide hazards (with Ravela & Emanuel). [Link](your-paper-link-here)
+        <div style="font-size: 0.9em; line-height: 1.6;">
+        
+        · 2025-04 — One Earth paper published: Bangladesh storm-tide hazards (with Ravela & Emanuel). （[Link](your-paper-link-here)）
         
         · 2025-03 — Invited talk at Climate Research Symposium, University of Tokyo.
         
@@ -123,6 +125,8 @@ sections:
         · 2025-01 — Featured in Nature Climate Change: "Hydrological extremes in Asia-Pacific region". [Link](your-link-here)
         
         · 2024-12 — Received Best Paper Award at AGU Fall Meeting 2024.
+        
+        </div>
     design:
       columns: '1'
       spacing:
