@@ -41,37 +41,13 @@ sections:
         
         Besides the traditional analyzing methods, I am very enthusiastic about using the knowledge of artificial intelligence approaches to comprehend the causes and consequences of these hydrological extremes. My research topics are summarized as followed.
 
-        ## Impacts of Climate Change and ENSO variabilities on Snow droughts in Asian Water Tower
+        ### Impacts of Climate Change and ENSO variabilities on Snow droughts in Asian Water Tower
         
         The Tibetan Plateau has experienced increasingly unprecedented snow droughts under climate warming, raising concerns about regional ecosystem sustainability and water resource security. While warming and drying are primary drivers, the specific roles of anthropogenic warming and climate variability in affecting these drivers and, consequently, the occurrence of snow drought remain unknown. In this study, we incorporated multi-source snowpack data and leveraged climate simulations to provide a detailed analysis of snow drought occurrence and trends across the TP. Our results provide critical insights into the driving mechanisms of snow droughts in this climate-sensitive region, aiming to support decision-makers in advancing climate resilience and sustainable water management. (Under review)
         
         ![Snowdrought](/static/uploads/Snow_drought.png)
         
-        ### Current Research Areas
-        
-        #### 1. Extreme Precipitation Events
-        - Analysis of precipitation patterns across different temporal and spatial scales
-        - Development of statistical models for extreme value analysis
-        - Investigation of anthropogenic influences on precipitation extremes
-        
-        #### 2. Drought and Water Resources
-        - Multi-scale drought characterization using satellite data
-        - Assessment of drought impacts on agricultural systems
-        - Development of early warning systems for drought prediction
-        
-        ![Drought Analysis](uploads/drought-research.png)
-        
-        #### 3. Machine Learning Applications
-        - Deep learning models for climate prediction
-        - AI-driven approaches for extreme event detection
-        - Integration of traditional physical models with ML techniques
-        
-        ### Key Findings
-        
-        Our recent work has demonstrated:
-        - Significant trends in extreme precipitation across East Asia
-        - Novel applications of transformer models in climate prediction
-        - Improved understanding of land-atmosphere feedback mechanisms
+        ### 
         
         ### Future Directions
         
