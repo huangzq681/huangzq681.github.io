@@ -47,6 +47,8 @@ taxonomies:
   author: authors
   tag: tags
   publication_type: publication_types
+  talk_type: talk_types
+  event: events
 markup:
   _merge: deep
   highlight:

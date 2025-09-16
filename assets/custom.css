@@ -1,0 +1,13 @@
+.talks-page .container {
+  max-width: 90%; /* 增加到90%宽度 */
+  margin-left: auto;
+  margin-right: auto;
+}
+.talks-page .row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.talks-page .col-md-8 {
+  flex: 0 0 100%; /* 强制宽度100% */
+  max-width: 100%;
+}

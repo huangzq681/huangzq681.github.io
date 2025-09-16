@@ -1,0 +1,136 @@
+{{/* 单个项目模板 - 简化版本 */}}
+{{ $item := .item }}
+
+{{ if $item }}
+  {{ $isValidTalk := false }}
+
+  {{/* 检查项目是否属于 talk 类型 */}}
+  {{ if and $item.File (strings.Contains $item.File.Path "talk/") }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+  
+  {{ if eq $item.Section "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+  
+  {{ if eq $item.Type "talk" }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+  
+  {{ if and $item.Params.event (or $item.Params.location $item.Params.presentation) }}
+    {{ $isValidTalk = true }}
+  {{ end }}
+
+  {{ if $isValidTalk }}
+    <div class="talk-item mb-4 pl-2" data-year="{{ dateFormat "2006" $item.Date }}">
+      <h3 class="font-semibold text-lg">{{ $item.Title }}</h3>
+      
+      {{ with $item.Params.event }}
+        <p class="text-gray-600 italic">{{ . }}</p>
+      {{ end }}
+      
+      <div class="text-base text-gray-600 italic mt-1">
+        {{ with $item.Params.location }}
+          <span>{{ . }}</span>
+        {{ end }}
+        
+        {{ with $item.Date }}
+          <span class="ml-2">{{ dateFormat "January 2, 2006" . }}</span>
+        {{ end }}
+        
+        {{ if and $item.Params.date_end (ne $item.Date $item.Params.date_end) }}
+          {{ $endDate := time $item.Params.date_end }}
+          <span> - {{ dateFormat "January 2, 2006" $endDate }}</span>
+        {{ end }}
+      </div>
+      
+      {{ with $item.Params.presentation }}
+        <div class="mt-1">
+          <span class="text-base text-gray-600 italic">{{ . }}</span>
+        </div>
+      {{ end }}
+      
+      {{ with $item.Summary }}
+        <p class="text-sm text-gray-600 italic mt-2">{{ . }}</p>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+{{/* JavaScript来处理年份分组 */}}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 延迟执行，确保所有内容都加载完成
+  setTimeout(function() {
+    // 查找所有talk项目
+    const talkItems = document.querySelectorAll('.talk-item');
+    if (talkItems.length === 0) return;
+    
+    console.log('找到', talkItems.length, '个talk项目');
+    
+    // 按年份分组
+    const itemsByYear = {};
+    talkItems.forEach(item => {
+      const year = item.getAttribute('data-year');
+      console.log('项目年份:', year, '项目标题:', item.querySelector('h3').textContent);
+      
+      // 跳过无效年份
+      if (!year || year === 'null' || year === '') {
+        console.log('跳过无效年份的项目');
+        return;
+      }
+      
+      if (!itemsByYear[year]) {
+        itemsByYear[year] = [];
+      }
+      itemsByYear[year].push(item);
+    });
+    
+    console.log('分组结果:', itemsByYear);
+    
+    // 获取排序后的年份，只包含有内容的年份
+    const years = Object.keys(itemsByYear).filter(year => itemsByYear[year].length > 0).sort((a, b) => b - a);
+    console.log('有效年份:', years);
+    
+    if (years.length === 0) {
+      console.log('没有找到有效的年份分组');
+      return;
+    }
+    
+    // 创建分组结构
+    const container = talkItems[0].parentElement;
+    const fragment = document.createDocumentFragment();
+    
+    years.forEach(year => {
+      // 创建年份标题
+      const yearDiv = document.createElement('div');
+      yearDiv.className = 'mb-8';
+      
+      const yearTitle = document.createElement('h2');
+      yearTitle.className = 'text-2xl font-bold text-gray-800 mb-2';
+      yearTitle.textContent = year;
+      
+      const hr = document.createElement('hr');
+      hr.className = 'border-t-2 border-gray-300 mb-4';
+      
+      yearDiv.appendChild(yearTitle);
+      yearDiv.appendChild(hr);
+      
+      // 添加该年份的所有项目
+      itemsByYear[year].forEach(item => {
+        // 移除data-year属性，因为不再需要
+        item.removeAttribute('data-year');
+        yearDiv.appendChild(item.cloneNode(true));
+      });
+      
+      fragment.appendChild(yearDiv);
+    });
+    
+    // 清空容器并添加分组后的内容
+    container.innerHTML = '';
+    container.appendChild(fragment);
+    
+    console.log('分组完成');
+  }, 100);
+});
+</script>
