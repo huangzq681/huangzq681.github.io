@@ -47,16 +47,17 @@ profiles:
 
 interests:
   - Climate Change
+  - Extreme event attribution
   - Hydrology
   - Artificial Intelligence
 
 education:
   - area: PhD Hydraulic Engineering
-    institution: Sun Yat-sen University & The University of Tokyo
+    institution: Sun Yat-sen University & The University of Tokyo (Jointly-trained PhD student)
     date_start: 2022-09-01
-    date_end: 2026-06-01
+    date_end: 2026-06-30
     summary: |
-      Thesis on _Tracking Heatwaves in Southern China under Global Warming: A Lagrangian View_. Supervised by [Prof Bingjun Liu] at SYSU and [Prof Taikan Oki] at UTokyo. 4 papers being published in 4 authorative journals.
+      Thesis on _Investigation of the Evolution Features and Physical Processes Driving Dry and Wet Heatwaves in South China_. Supervised by [Prof Bingjun Liu] at SYSU and [Prof Taikan Oki] at UTokyo. 4 papers being published in 4 authorative journals.
     # button:
     #   text: 'Read Thesis'
     #   url: 'https://example.com'
