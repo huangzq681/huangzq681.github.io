@@ -12,13 +12,15 @@ html.dark body {
 /* --- Dark mode: all section backgrounds --- */
 html.dark .wg-page-header,
 html.dark section,
+html.dark section *,
 html.dark .universal-wrapper,
 html.dark main,
 html.dark .bg-white,
-html.dark [style*="background-color: white"],
-html.dark [style*="background-color:white"],
-html.dark [style*="background: white"] {
+html.dark [class*="bg-"],
+html.dark [style*="background-color"],
+html.dark [style*="background:"] {
   background-color: #000000 !important;
+  background-image: none !important;
   color: #e2e8f0 !important;
 }
 
