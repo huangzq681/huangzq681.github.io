@@ -37,15 +37,27 @@ html.dark h3,
 html.dark h4,
 html.dark h5,
 html.dark h6 {
-  color: #f1f5f9;
+  color: #f1f5f9 !important;
 }
 
 /* --- Dark mode: body text & lists --- */
 html.dark p,
 html.dark li,
 html.dark td,
-html.dark th {
-  color: #cbd5e1;
+html.dark th,
+html.dark span {
+  color: #cbd5e1 !important;
+}
+
+/* --- Dark mode: Tailwind gray text classes (e.g. conference section) --- */
+html.dark [class*="text-gray-"] {
+  color: #cbd5e1 !important;
+}
+
+/* --- Dark mode: HR borders --- */
+html.dark hr,
+html.dark [class*="border-gray-"] {
+  border-color: #475569 !important;
 }
 
 /* --- Dark mode: publication / article metadata --- */
