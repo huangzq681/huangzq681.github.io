@@ -5,17 +5,27 @@
 
 /* --- Dark mode: page background & base text --- */
 html.dark body {
-  background-color: #0f172a;
+  background-color: #000000;
   color: #e2e8f0;
 }
 
-/* --- Dark mode: hardcoded white backgrounds (e.g. biography section) --- */
+/* --- Dark mode: all section backgrounds --- */
+html.dark .wg-page-header,
+html.dark section,
+html.dark .universal-wrapper,
+html.dark main,
 html.dark .bg-white,
 html.dark [style*="background-color: white"],
 html.dark [style*="background-color:white"],
 html.dark [style*="background: white"] {
-  background-color: #1e293b !important;
+  background-color: #000000 !important;
   color: #e2e8f0 !important;
+}
+
+/* --- Dark mode: biography block background image override --- */
+html.dark .wg-hero {
+  background-color: #000000 !important;
+  background-image: none !important;
 }
 
 /* --- Dark mode: headings --- */
@@ -65,8 +75,11 @@ html.dark code {
   color: #7dd3fc;
 }
 
-/* --- Light mode: ensure clean white base when user switches back --- */
-html:not(.dark) body {
+/* --- Light mode: pure white background --- */
+html:not(.dark) body,
+html:not(.dark) section,
+html:not(.dark) main,
+html:not(.dark) .universal-wrapper {
   background-color: #ffffff;
   color: #111827;
 }

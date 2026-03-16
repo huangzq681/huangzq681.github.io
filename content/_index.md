@@ -24,14 +24,7 @@ sections:
         size: large  # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
         shape: circle # Options: circle (default), square, rounded
       background:
-        image:
-          # Add your image background to `assets/media/`.
-          filename: pattern-randomized.svg
-          filters:
-            brightness: 1.2
-          size: cover
-          position: center
-          parallax: false
+        color: white
   - block: markdown
     content:
       title: '📚 My Research'
