@@ -25,8 +25,7 @@ sections:
         .news-content img {
           margin-top: 5px;
           margin-bottom: 15px;
-          width: auto;  /* 防止小图被强制放大而变糊 */
-          max-width: 100%;
+          width: 100%;  /* 恢复原始100%布局 */
           height: auto;  /* 保持比例 */
           display: block;
           margin-left: auto;
