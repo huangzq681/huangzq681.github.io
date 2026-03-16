@@ -1,3 +1,78 @@
+/* =====================
+   Light / Dark Mode Color Switching
+   (Hugo Blox adds 'dark' class to <html> when dark mode is active)
+   ===================== */
+
+/* --- Dark mode: page background & base text --- */
+html.dark body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* --- Dark mode: hardcoded white backgrounds (e.g. biography section) --- */
+html.dark .bg-white,
+html.dark [style*="background-color: white"],
+html.dark [style*="background-color:white"],
+html.dark [style*="background: white"] {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* --- Dark mode: headings --- */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #f1f5f9;
+}
+
+/* --- Dark mode: body text & lists --- */
+html.dark p,
+html.dark li,
+html.dark td,
+html.dark th {
+  color: #cbd5e1;
+}
+
+/* --- Dark mode: publication / article metadata --- */
+html.dark .article-metadata,
+html.dark .pub-list-item .article-style {
+  color: #94a3b8;
+}
+
+/* --- Dark mode: publication title links --- */
+html.dark a.article-title-link {
+  color: #7dd3fc !important;
+}
+
+/* --- Dark mode: cards & paper cards --- */
+html.dark .card,
+html.dark .paper-card {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+}
+
+/* --- Dark mode: horizontal rules --- */
+html.dark hr {
+  border-color: #334155;
+}
+
+/* --- Dark mode: inline code --- */
+html.dark code {
+  background-color: #1e293b;
+  color: #7dd3fc;
+}
+
+/* --- Light mode: ensure clean white base when user switches back --- */
+html:not(.dark) body {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* ================================================ */
+
 .talks-page .container {
   max-width: 90%; /* 增加到90%宽度 */
   margin-left: auto;
