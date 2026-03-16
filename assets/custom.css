@@ -12,7 +12,6 @@ html.dark body {
 /* --- Dark mode: all section backgrounds --- */
 html.dark .wg-page-header,
 html.dark section,
-html.dark section *,
 html.dark .universal-wrapper,
 html.dark main,
 html.dark .bg-white,
@@ -22,6 +21,15 @@ html.dark [style*="background:"] {
   background-color: #000000 !important;
   background-image: none !important;
   color: #e2e8f0 !important;
+}
+
+/* Keep media elements untouched in dark mode to avoid color/background artifacts */
+html.dark img,
+html.dark svg,
+html.dark video,
+html.dark canvas {
+  background-color: transparent !important;
+  color: initial !important;
 }
 
 /* --- Dark mode: biography block background image override --- */
